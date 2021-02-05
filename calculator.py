@@ -21,16 +21,60 @@ def buttonClear():
 def buttonAdd():
     firstNumber = intake.get()
     global fNum
+    global operation
+    operation = "Addition"
     fNum = int(firstNumber)
     intake.delete(0, END)
     
     return
 
+def buttonSubtract():
+    firstNumber = intake.get()
+    global fNum
+    global operation
+    operation = "Subtraction"
+    fNum = int(firstNumber)
+    intake.delete(0, END)
+    
+    return
+
+def buttonMultiply():
+    firstNumber = intake.get()
+    global fNum
+    global operation
+    operation = "Multiplication"
+    fNum = int(firstNumber)
+    intake.delete(0, END)
+    
+    return
+
+def buttonDivide():
+    firstNumber = intake.get()
+    global fNum
+    global operation
+    operation = "Division"
+    fNum = int(firstNumber)
+    intake.delete(0, END)
+    
+    return
+
+
 def buttonEqual():
     secondNumber = intake.get()
     intake.delete(0, END)
-    intake.insert(fNum+int(secondNumber))
+
+    if operation == "Addition":
+        intake.insert(0, fNum+int(secondNumber))
+    if operation == "Subtraction":
+        intake.insert(0, fNum-int(secondNumber))
+    if operation == "Multiplication":
+        intake.insert(0, fNum*int(secondNumber))
+    if operation == "Division":
+        intake.insert(0, fNum/int(secondNumber))
     return
+
+
+
 
 # Define Buttons
 
@@ -50,7 +94,9 @@ button_Add = Button(root, text="+", padx=39, pady=20, command=buttonAdd).grid(ro
 button_equal = Button(root, text="=", padx=91, pady=20, command=buttonEqual).grid(row=5, column=1, columnspan=2)
 button_clear = Button(root, text="clear", padx=79, pady=20, command=buttonClear).grid(row=4, column=1, columnspan=2)
 
-
+button_Subtraction = Button(root, text="-", padx=41, pady=20, command=buttonSubtract).grid(row=6, column=0)
+button_Multiplication = Button(root, text="*", padx=40, pady=20, command=buttonMultiply).grid(row=6, column=1)
+button_Division = Button(root, text="/", padx=40, pady=20, command=buttonDivide).grid(row=6, column=2)
 
 # Put the buttons on the screen
 
