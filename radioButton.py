@@ -1,4 +1,8 @@
 from tkinter import *
+<<<<<<< HEAD
+=======
+# from PIL import ImageTk, Image
+>>>>>>> fix-next-prev-images
 
 # root tkinter widget
 root = Tk()
@@ -7,7 +11,10 @@ root.title('Adding radio buttons')
 # r = IntVar()
 # r.set('2')
 
+<<<<<<< HEAD
 # Branches to be selected by the user
+=======
+>>>>>>> fix-next-prev-images
 Branches = [
     ("CSE", "Computer Science and Engineering"),
     ("ECE", "Electronics and Communication Engineering"),
@@ -17,6 +24,7 @@ Branches = [
     ("EE", "Electrical Engineering"),
 ]
 
+<<<<<<< HEAD
 # Declare a string type variable
 branch = StringVar()
 # Set a default value
@@ -27,10 +35,23 @@ for short, full in Branches:
     Radiobutton(root, text=short, value=full, variable = branch).pack()
 
 # Define the function of the click button
+=======
+branch = StringVar()
+branch.set('Computer Science and Engineering')
+
+for short, full in Branches:
+    Radiobutton(root, text=short, value=full, variable = branch).pack()
+
+>>>>>>> fix-next-prev-images
 def clicked(value):
     myLabel = Label(root, text=value)
     myLabel.pack()
 
+<<<<<<< HEAD
+=======
+# Radiobutton(root, text="YES", variable=r, value=1, command=lambda: clicked(r.get())).pack()
+# Radiobutton(root, text="NO", variable=r, value=2, command=lambda: clicked(r.get())).pack()
+>>>>>>> fix-next-prev-images
 
 # myLabel = Label(root, text=r.get())
 myLabel = Label(root, text=branch .get())
