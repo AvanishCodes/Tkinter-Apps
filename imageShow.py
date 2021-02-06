@@ -41,7 +41,7 @@ def forward():
     global buttonBack
     global currentFileNo
     global newImage
-    global files
+    # global files
     myLabel.grid_forget() 
     # newImage = files[(currentFileNo+1)%len(files)]
     currentFileNo += 1
@@ -77,7 +77,7 @@ def back():
     global buttonForward
     global buttonQuit
     global buttonBack
-    global files
+    # global files
     global newImage
     global currentFileNo
     print(currentFileNo)
