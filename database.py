@@ -18,7 +18,7 @@ c = conn.cursor()
 '''
 c.execute("""CREATE TABLE students(
     firstName text,
-    lastName test,
+    lastName text,
     yearOfEntry integer,
     branch text,
     uiNo text,
@@ -30,25 +30,25 @@ c.execute("""CREATE TABLE students(
 # Create Submit Function
 def submit():
     # clear the text boxes
-    fName.delete(0, END)
-    lName.delete(0, END)
-    yOE.delete(0, END)
-    Branch.delete(0, END)
-    uiNum.delete(0, END)
-    studentEmail.delete(0, END)
+    # fName.delete(0, END)
+    # lName.delete(0, END)
+    # yOE.delete(0, END)
+    # Branch.delete(0, END)
+    # uiNum.delete(0, END)
+    # studentEmail.delete(0, END)
     # create a DB or connect to one
     conn = sqlite3.connect('StudentsList.db')
     # Create a cursor
     c = conn.cursor()
     # Use the inputs
-    c.execute("INSERT INTO students VALUES(:firstName, :lastName, :yearOfEntry, :branch, :uiNo, :email)",
+    c.execute("INSERT INTO students VALUES(:fName, :lName, :yOE, :Branch, :uiNum, :studentEmail)",
         {
-            'firstName': fName.get(),
-            'firstName': lName.get(),
-            'yearOfEntry': yOE.get(),
-            'branch': Branch.get(),
-            'ioNo': uiNum.get(),
-            'email': studentEmail.get()
+            'fName': fName.get(),
+            'lName': lName.get(),
+            'yOE': yOE.get(),
+            'Branch': Branch.get(),
+            'uiNum': uiNum.get(),
+            'studentEmail': studentEmail.get()
         }
     )
     # Commit chanegs
@@ -57,10 +57,66 @@ def submit():
     conn.close()
     
 
-# Define a query Function
-def query():
+def newWindow():
+    top = Toplevel()     # The window to be opened
+    top.title('Records of all the students')
+    
+    conn = sqlite3.connect('StudentsList.db')
+    # Create a cursor
+    c = conn.cursor()
+    # Use the inputs
+    c.execute("SELECT *, oid FROM students")
+    records = c.fetchall()
+    print(records)
+
+    rowNumber = 0
+    columnNumber = 0
+    headerSr = Label(top, text="Sr. No.", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerFirstName = Label(top, text="First Name", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerLastName = Label(top, text="Last Name", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerYear = Label(top, text="Year of Admission", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerBranch = Label(top, text="Branch", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerUINumber = Label(top, text="UI Number", padx=5).grid(row=rowNumber, column=columnNumber)
+    columnNumber += 1
+    headerEmail = Label(top, text="College email", padx=5).grid(row=rowNumber, column=columnNumber)
+
+    rowNumber += 1
+    for record in records:
+        columnNumber = 0
+        serial = Label(top, text=rowNumber).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        FirstName = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        LastName = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        Year = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        Branch = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        UINumber = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        columnNumber += 1
+        Email = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
+        rowNumber += 1
+        closeBtn = Button(top, text='Close This Window', command=top.destroy).grid(row=rowNumber)
+        
+        
+    # Other functions are fetchone and fetchmany
+    # print(c.fetchall())
+    # Commit chanegs
+    conn.commit()
+    # Close the connection
+    conn.close()
     
     return
+
+# Define a query Function
+def query():
+    newWindow()
 
 # Create text boxes
 
