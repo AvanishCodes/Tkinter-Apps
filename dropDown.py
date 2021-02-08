@@ -9,6 +9,7 @@ root.geometry("1000x1000")
 
 # Drop down boxes
 
+
 def show():
     nyLabel = Label(root, text=clicked.get()).pack()
 
@@ -22,6 +23,7 @@ dropBranch = OptionMenu(root, clicked, *branches)
 dropBranch.pack()
 
 selectionButoon = Button(root, text="Show Selection", command=show).pack()
+
 
 
 mainloop()
