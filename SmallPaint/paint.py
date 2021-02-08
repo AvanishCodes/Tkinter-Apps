@@ -1,6 +1,6 @@
 from tkinter import *
-# import PIL
-# from PIL import Image, ImageDraw
+import PIL
+from PIL import Image, ImageDraw
 def save():
     filename = input("Enter the O/P file name : ")
     filename = "image.png"
