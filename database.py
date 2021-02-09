@@ -102,7 +102,7 @@ def newWindow():
         columnNumber += 1
         Email = Label(top, text=record[columnNumber-1], padx=5).grid(row=rowNumber, column=columnNumber)
         rowNumber += 1
-        closeBtn = Button(top, text='Close This Window', command=top.destroy).grid(row=rowNumber)
+    closeBtn = Button(top, text='Close This Window', command=top.destroy).grid(row=rowNumber)
         
         
     # Other functions are fetchone and fetchmany
